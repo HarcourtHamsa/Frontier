@@ -1,7 +1,8 @@
 .input {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  margin-bottom: 1em;
+  // gap: 10px;
   // align-items: center;
   input {
     height: 44px;
@@ -10,7 +11,8 @@
     border: 0;
     border: 1px solid rgba(54, 54, 54, 0.2);
     // background-color: whitesmoke;
-    background-color: rgb(232, 240, 254);
+    background-color: transparent;
     outline: none;
+    font-size: 1rem;
   }
 }

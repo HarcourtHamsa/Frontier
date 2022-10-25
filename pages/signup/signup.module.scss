@@ -1,0 +1,36 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.signup_page {
+  width: 100%;
+  min-height: 100vh;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(gray, #131313);
+
+  .card {
+    width: 80%;
+    background-color: white;
+    padding: 12px;
+    border-radius: 3px;
+    margin: 4em 0;
+
+    .title {
+      text-transform: uppercase;
+      margin: auto;
+      width: fit-content;
+      margin-bottom: 2em;
+    }
+
+    a {
+      text-decoration: none;
+      color: $col-green;
+    }
+
+    @include respond-to("mobile") {
+      width: 400px;
+    }
+  }
+}
