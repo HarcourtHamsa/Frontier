@@ -1,0 +1,20 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "FKScreamer";
+  src: url("../assets/fonts/FKScreamer-Bold.woff2");
+}
+
+@font-face {
+  font-family: "PolyPie";
+  src: url("../assets/fonts/PolyPie-Neutral.woff2");
+}
+
+* {
+  font-family: "PolyPie";
+}

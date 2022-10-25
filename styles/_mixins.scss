@@ -1,0 +1,29 @@
+// mixins allows us to create re-usable styles
+
+@mixin flex($justify: flex-start, $align: flex-start, $direction: row) {
+  flex-direction: $direction;
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+$breakpoints: (
+  "mobile": 600px,
+  "tablet": 900px,
+  "lg-tablet": 920px,
+  "sm-desktop": 1125px,
+  "desktop": 1366px,
+) !default;
+
+/// @param {String} $breakpoint - name of breakpoint
+@mixin respond-to($breakpoint) {
+  // if breakpoint is in the list of breakpoints
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+      + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
