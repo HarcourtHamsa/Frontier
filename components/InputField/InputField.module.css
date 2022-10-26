@@ -1,0 +1,15 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+.input input {
+  height: 44px;
+  padding: 0 12px;
+  border-radius: 5px;
+  border: 0;
+  border: 1px solid rgba(54, 54, 54, 0.2);
+  background-color: transparent;
+  outline: none;
+  font-size: 1rem;
+}/*# sourceMappingURL=InputField.module.css.map */

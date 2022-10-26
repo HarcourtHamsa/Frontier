@@ -1,0 +1,81 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.header {
+  background-color: $col-white;
+  padding: 12px 0;
+  border: 1px solid rgba(128, 128, 128, 0.214);
+
+  .inner {
+    max-width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // color: white;
+
+    .user__info__container {
+      position: relative;
+
+      .user__info {
+        display: flex !important;
+        align-items: center;
+        gap: 10px;
+        .avi {
+          cursor: pointer;
+          width: 50px;
+          height: 50px;
+          //   background-color: aqua;
+          border-radius: 50%;
+          border: 1px solid rgba(128, 128, 128, 0.214);
+        }
+      }
+
+      .dropdown {
+        position: absolute;
+        width: 100%;
+        height: fit-content;
+        background-color: whitesmoke;
+        left: -10%;
+        top: 110%;
+        border-radius: 3px;
+        border: 1px solid rgba(128, 128, 128, 0.214);
+        transition: all 1s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+
+        ul {
+          list-style: none;
+          padding-left: 0;
+          margin: 0;
+          li {
+            margin-top: 0;
+            cursor: pointer;
+            padding: 12px 25px;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.214);
+            color: black;
+          }
+        }
+      }
+
+      .dropdown[data-active="false"] {
+        display: none;
+        transition: all 0.3s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+      }
+
+      .dropdown[data-active="true"] {
+        display: block;
+        transition: all 0.3s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+      }
+    }
+  }
+}
+
+.main {
+  width: 90%;
+  margin: auto;
+  // background-color: aqua;
+  padding-top: 1rem;
+
+  @include respond-to("mobile") {
+    width: 70vw;
+  }
+}
