@@ -7,7 +7,7 @@ const xata = getXataClient();
 const handler = nc().post(async (req: NextApiRequest, res: NextApiResponse) => {
   console.log(req.body.email);
   const record = await xata.db.Users.filter({
-    email: req.body.email,
+    email: req.body.email
   }).getMany();
 
   console.log(record.length);

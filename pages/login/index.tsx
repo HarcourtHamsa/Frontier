@@ -1,18 +1,45 @@
-import React from 'react'
-import Link from 'next/link'
-import Button from '../../components/Button/Button'
-import InputField from '../../components/InputField/InputField'
-import styles from './login.module.scss'
+import React from "react";
+import Link from "next/link";
+import Button from "../../components/Button/Button";
+import InputField from "../../components/InputField/InputField";
+import { useFormik } from "formik";
+import styles from "./login.module.scss";
+import { login } from "../../lib/auth";
 
 const index = () => {
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: ""
+    },
+
+    onSubmit: async (values) => {
+      let data = login(values)
+      console.log(data)
+    }
+  })
   return (
     <div className={styles.loginForm}>
       <div className={styles.card}>
-        <form>
+        <form onSubmit={formik.handleSubmit}>
           <p className={styles.title}>login</p>
-          <InputField type='email' placeholder='Enter your email'/>
-          <InputField type='email' placeholder='Enter your email'/>
-          <Button label='Login' theme='green' />
+          <InputField
+            type="email"
+            placeholder="Enter your email"
+            onChange={formik.handleChange}
+            name="email"
+            id="email"
+            value={formik.values.email}
+          />
+          <InputField
+            type="password"
+            placeholder="Enter your password"
+            onChange={formik.handleChange}
+            name="password"
+            id="password"
+            value={formik.values.password}
+          />
+          <Button label="Login" theme="green" />
         </form>
 
         <p>
@@ -23,7 +50,7 @@ const index = () => {
         </p>
       </div>
     </div>
-  )
-}
- 
-export default index
+  );
+};
+
+export default index;

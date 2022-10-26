@@ -5,4 +5,9 @@ const register = async (obj: object) => {
   return data;
 };
 
-export { register };
+const login = async (obj: object) => {
+  const { data } = await axios.post("/api/auth/login", { ...obj });
+  return data;
+}
+
+export { register, login };
