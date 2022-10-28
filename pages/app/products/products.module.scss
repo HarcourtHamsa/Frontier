@@ -1,0 +1,32 @@
+@import "../../../styles/mixins";
+
+.new_project_btn {
+  width: fit-content;
+  margin-top: 1em;
+}
+
+.main {
+  margin-top: 3em;
+
+  h3 {
+    color: white;
+    font-weight: normal;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1em;
+
+    // media query
+    @include respond-to("mobile") {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    // media query
+    @include respond-to("tablet") {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5em;
+    }
+  }
+}

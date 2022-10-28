@@ -1,0 +1,41 @@
+@import "../../../../styles/mixins";
+@import "../../../../styles/variables";
+
+.main {
+  h3 {
+    color: white;
+    font-weight: normal;
+    margin-bottom: 2em;
+    font-size: large;
+  }
+
+  label {
+    color: white;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 100px;
+    background-color: transparent;
+    height: fit-content;
+    margin-bottom: 2em;
+    font-size: 1rem;
+    border-radius: 3px;
+    padding:12px;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: 2px solid $col-green;
+    }
+  }
+
+  button {
+    width: fit-content !important;
+  }
+
+  @include respond-to("mobile") {
+    // background-color: red;
+    width: 450px;
+    margin: auto;
+  }
+}

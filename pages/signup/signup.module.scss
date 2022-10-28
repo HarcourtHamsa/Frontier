@@ -8,11 +8,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(gray, #131313);
+  // background: radial-gradient(gray, #131313);
 
   .card {
     width: 80%;
-    background-color: white;
+    // background-color: white;
     padding: 12px;
     border-radius: 3px;
     margin: 4em 0;
@@ -27,6 +27,11 @@
     a {
       text-decoration: none;
       color: $col-green;
+    }
+
+    p,
+    label {
+      color: white;
     }
 
     @include respond-to("mobile") {

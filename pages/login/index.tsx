@@ -10,20 +10,21 @@ const index = () => {
   const formik = useFormik({
     initialValues: {
       email: "",
-      password: ""
+      password: "",
     },
 
     onSubmit: async (values) => {
-      let data = login(values)
-      console.log(data)
-    }
-  })
+      let data = login(values);
+      console.log(data);
+    },
+  });
   return (
     <div className={styles.loginForm}>
       <div className={styles.card}>
         <form onSubmit={formik.handleSubmit}>
           <p className={styles.title}>login</p>
           <InputField
+            label="Email Address"
             type="email"
             placeholder="Enter your email"
             onChange={formik.handleChange}
@@ -32,6 +33,7 @@ const index = () => {
             value={formik.values.email}
           />
           <InputField
+          label="Password"
             type="password"
             placeholder="Enter your password"
             onChange={formik.handleChange}

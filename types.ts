@@ -4,7 +4,7 @@ type buttomTypes = "submit" | "reset" | "button";
 export interface ButtonInterface {
   label: string;
   theme: theme;
-  onClick?: void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   type?: buttomTypes;
 }
 

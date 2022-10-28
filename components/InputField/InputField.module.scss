@@ -1,3 +1,5 @@
+@import '../../styles/variables';
+
 .input {
   display: flex;
   flex-direction: column;
@@ -9,10 +11,14 @@
     padding: 0 12px;
     border-radius: 5px;
     border: 0;
-    border: 1px solid rgba(54, 54, 54, 0.2);
+    border: 2px solid rgb(54, 54, 54);
     // background-color: whitesmoke;
     background-color: transparent;
     outline: none;
     font-size: 1rem;
+
+    &:focus{
+      outline: 2px solid $col-green;
+    }
   }
 }

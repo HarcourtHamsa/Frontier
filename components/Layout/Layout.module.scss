@@ -2,7 +2,7 @@
 @import "../../styles/mixins";
 
 .header {
-  background-color: $col-white;
+  // background-color: $col-white;
   padding: 12px 0;
   border: 1px solid rgba(128, 128, 128, 0.214);
 
@@ -29,13 +29,17 @@
           border-radius: 50%;
           border: 1px solid rgba(128, 128, 128, 0.214);
         }
+
+        p {
+          color: gray;
+        }
       }
 
       .dropdown {
         position: absolute;
         width: 100%;
         height: fit-content;
-        background-color: whitesmoke;
+        background-color: #282828;
         left: -10%;
         top: 110%;
         border-radius: 3px;
@@ -46,12 +50,21 @@
           list-style: none;
           padding-left: 0;
           margin: 0;
+
           li {
             margin-top: 0;
             cursor: pointer;
-            padding: 12px 25px;
+            // padding: 12px 25px;
             border-bottom: 1px solid rgba(128, 128, 128, 0.214);
-            color: black;
+            color: gray;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+              color: white;
+            }
           }
         }
       }
