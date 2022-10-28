@@ -17,6 +17,22 @@ const tables = [
       { name: "username", type: "string", unique: true },
     ],
   },
+  {
+    name: "Products",
+    columns: [
+      { name: "name", type: "string" },
+      { name: "description", type: "string" },
+      { name: "price", type: "string" },
+      { name: "image_url", type: "string" },
+    ],
+  },
+  {
+    name: "Store",
+    columns: [
+      { name: "products", type: "link", link: { table: "Products" } },
+      { name: "owners_id", type: "string" },
+    ],
+  },
 ] as const;
 
 export type SchemaTables = typeof tables;
@@ -25,8 +41,16 @@ export type InferredTypes = SchemaInference<SchemaTables>;
 export type Users = InferredTypes["Users"];
 export type UsersRecord = Users & XataRecord;
 
+export type Products = InferredTypes["Products"];
+export type ProductsRecord = Products & XataRecord;
+
+export type Store = InferredTypes["Store"];
+export type StoreRecord = Store & XataRecord;
+
 export type DatabaseSchema = {
   Users: UsersRecord;
+  Products: ProductsRecord;
+  Store: StoreRecord;
 };
 
 const DatabaseClient = buildClient();

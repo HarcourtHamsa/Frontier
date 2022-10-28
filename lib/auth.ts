@@ -10,4 +10,8 @@ const login = async (obj: object) => {
   return data;
 }
 
-export { register, login };
+const product = async (obj: object) => {
+  const { data } = await axios.post("/api/auth/product", { ...obj })
+}
+
+export { register, login, product };

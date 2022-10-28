@@ -5,8 +5,11 @@ import Button from "../../components/Button/Button";
 import InputField from "../../components/InputField/InputField";
 import styles from "./signup.module.scss";
 import { register } from "../../lib/auth";
+import { useRouter } from "next/router";
 
 const signup = () => {
+  const router = useRouter();
+
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -17,8 +20,9 @@ const signup = () => {
     },
 
     onSubmit: async (values) => {
-      let data = register(values);
-      console.log(data);
+      register(values)
+        // .then(({ data }) => router.push("/app"))
+        // .catch((err) => console.log(err));
     },
   });
   return (
