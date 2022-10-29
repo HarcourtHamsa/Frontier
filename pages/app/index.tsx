@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Layout from "../../components/Layout/Layout";
 import InputField from "../../components/InputField/InputField";
 import styles from "./app.module.scss";
@@ -6,15 +6,16 @@ import Button from "../../components/Button/Button";
 
 const Index = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [newStoreName, setNewStoreName] = useState("");
 
-  // useEffect(() => {
-  //   const store = document
-  //   .querySelector("#store_card_form_bg")
+  const handleStoreName = (e) => {
+    setNewStoreName(e.target.value);
+  };
 
-  //   store.addEventListener('click', () => {
-  //     setIsOpen(!isOpen)
-  //   })
-  // }, [])
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(newStoreName);
+  };
 
   return (
     <div>
@@ -32,19 +33,19 @@ const Index = () => {
             id="store_card_form_bg"
             data-active={isOpen}
             onClick={() => setIsOpen(!isOpen)}
-          >
-          </div>
+          ></div>
           <div className={styles.store_card_form} data-active={isOpen}>
-            <form>
-              <h1 className={styles.title}>Create a store</h1>
+            <h2 className={styles.title}>Create a store</h2>
+            <form onSubmit={handleSubmit}>
               <InputField
                 type="text"
                 name="store_name"
                 id="store_name"
-                value=""
+                value={newStoreName}
+                onChange={handleStoreName}
                 placeholder="Enter store name"
               />
-              <Button label="Create" theme="green" />
+              <Button label="Create store" theme="green" type="submit" />
             </form>
           </div>
         </main>
