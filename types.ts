@@ -14,6 +14,6 @@ export interface InputFieldInterface {
   label?: string;
   name: string;
   id: string;
-  value: string;
+  value?: string;
   onChange?: React.ChangeEventHandler;
 }

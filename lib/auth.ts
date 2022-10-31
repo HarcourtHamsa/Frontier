@@ -12,6 +12,7 @@ const login = async (obj: object) => {
 
 const product = async (obj: object) => {
   const { data } = await axios.post("/api/auth/product", { ...obj })
+  return data;
 }
 
 export { register, login, product };
