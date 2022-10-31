@@ -24,13 +24,14 @@ const tables = [
       { name: "description", type: "string" },
       { name: "price", type: "string" },
       { name: "image_url", type: "string" },
+      { name: "store_id", type: "link", link: { table: "Store" } },
     ],
   },
   {
     name: "Store",
     columns: [
-      { name: "products", type: "link", link: { table: "Products" } },
       { name: "owners_id", type: "string" },
+      { name: "name", type: "string" },
     ],
   },
 ] as const;

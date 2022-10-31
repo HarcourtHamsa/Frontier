@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Card.module.scss";
 import { FiMoreVertical } from "react-icons/fi";
 
-const Card = () => {
+const Card = ({ price, image_url, name }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className={styles.card}>
@@ -19,8 +19,8 @@ const Card = () => {
         </div>
       </div>
       <div className={styles.card_body}>
-        <p className={styles.product_name}>Play Station 5</p>
-        <p className={styles.product_price}>N 500</p>
+        <p className={styles.product_name}>{name}</p>
+        <p className={styles.product_price}>N {price}</p>
       </div>
     </div>
   );
