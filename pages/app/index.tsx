@@ -8,6 +8,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios, { AxiosRequestConfig } from "axios";
 import { useRouter } from "next/router";
+import { json } from "stream/consumers";
+import { WithAuth } from "../../HOCs/WithAuth";
 
 const Index = () => {
   const router = useRouter();
@@ -26,7 +28,7 @@ const Index = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      const res = await axios.post("/api/auth/store", { name: newStoreName });
+      const res = await axios.post("/api/store", { name: newStoreName });
       console.log(res);
       notify();
 
@@ -52,7 +54,7 @@ const Index = () => {
 
   useEffect(() => {
     async function getStores() {
-      const { data } = await axios.get("/api/auth/stores");
+      const { data } = await axios.get("/api/stores");
       return data;
     }
 
@@ -125,5 +127,9 @@ const Index = () => {
     </div>
   );
 };
+
+export const getServerSideProps = WithAuth(async (context) => {
+  return { props: {} };
+});
 
 export default Index;

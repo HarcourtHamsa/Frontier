@@ -3,9 +3,11 @@ import nc from "next-connect";
 import { getXataClient } from "../../../utils/xata.codegen";
 const xata = getXataClient();
 
-const handler = nc().get(async (req: NextApiRequest, res: NextApiResponse) => {
-  const record = await xata.db.Store.filter({
-    owners_id: "rec_cdbtu5n9a5tgamsmrlug",
+const handler = nc().post(async (req: NextApiRequest, res: NextApiResponse) => {
+  const { storeID } = req.body;
+
+  const record = await xata.db.Products.filter({
+    store_id: storeID,
   }).getMany();
 
   if (!record) {
@@ -17,5 +19,4 @@ const handler = nc().get(async (req: NextApiRequest, res: NextApiResponse) => {
     data: record,
   });
 });
-
 export default handler;

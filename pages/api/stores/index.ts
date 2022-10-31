@@ -2,10 +2,15 @@ import { NextApiRequest, NextApiResponse } from "next";
 import nc from "next-connect";
 import { getXataClient } from "../../../utils/xata.codegen";
 const xata = getXataClient();
+import { decode } from "jsonwebtoken";
 
 const handler = nc().get(async (req: NextApiRequest, res: NextApiResponse) => {
-  const record = await xata.db.Products.filter({
-    store_id: "rec_cdell1ojj84frlq3f1kg",
+  const jwt = req.cookies.frontier__jwt;
+  const decodedData = decode(jwt);
+  const accessToken = decodedData["0"].id;
+
+  const record = await xata.db.Store.filter({
+    owners_id: accessToken,
   }).getMany();
 
   if (!record) {
@@ -17,4 +22,5 @@ const handler = nc().get(async (req: NextApiRequest, res: NextApiResponse) => {
     data: record,
   });
 });
+
 export default handler;

@@ -21,12 +21,17 @@
     margin-bottom: 2em;
     font-size: 1rem;
     border-radius: 3px;
-    padding:12px;
+    padding: 12px;
     box-sizing: border-box;
+    color: white;
 
     &:focus {
       outline: 2px solid $col-green;
     }
+  }
+
+  input {
+    color: white;
   }
 
   button {

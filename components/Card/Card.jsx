@@ -6,7 +6,15 @@ const Card = ({ price, image_url, name }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className={styles.card}>
-      <div className={styles.card_img}>
+      <div
+        className={styles.card_img}
+        style={{
+          backgroundImage: `url(${image_url})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className={styles.more_icon} onClick={() => setIsOpen(!isOpen)}>
           <FiMoreVertical size={20} />
         </div>

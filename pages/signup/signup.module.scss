@@ -34,6 +34,10 @@
       color: white;
     }
 
+    input{
+      color: white;
+    }
+
     @include respond-to("mobile") {
       width: 400px;
     }
