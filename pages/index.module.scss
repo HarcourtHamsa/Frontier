@@ -1,0 +1,74 @@
+@import "../styles/mixins";
+@import "../styles/variables";
+
+
+.hero {
+  background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(#1a8293),
+      to(rgb(1, 42, 48))
+    )
+    bottom no-repeat;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+.header {
+  max-width: 1159px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+
+  h2 {
+    color: $col-green;
+    font-family: "PolyPie";
+  }
+}
+
+.hero_content {
+  text-align: center;
+  color: white;
+  font-family: "PolyPie";
+  max-width: 90vw;
+  margin: auto;
+  // @extend %page-container;
+
+  @include respond-to("mobile") {
+    width: 800px;
+  }
+
+  h1 {
+    font-family: "PolyPie";
+  }
+
+  p{
+    @include respond-to("mobile") {
+      width: 500px;
+      margin: auto;
+    }
+  }
+}
+
+
+
+.img {
+  padding: 0;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  overflow: hidden;
+}
+
+// .hero::after{
+//   content: "";
+//   background: url(/hero.png) no-repeat 50%;
+//   width: 100%;
+//   height: calc(100vh - 0px);
+//   background-size: 100%;
+//   position: absolute;
+//   background-position: left 0 bottom 0;
+// }
