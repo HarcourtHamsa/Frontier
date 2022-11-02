@@ -17,11 +17,6 @@ const NewProduct = () => {
   const [price, setPrice] = useState()
   const [description, setDescription] = useState()
 
-  useEffect(() => { // this hook will get called everytime when myArr has changed
-    // perform some action which will get fired everytime when myArr gets updated
-    console.log('Updated State', image_url)
-  }, [image_url])
-
 
   async function handleSubmit(e){
     e.preventDefault()
@@ -38,11 +33,9 @@ const NewProduct = () => {
       return response.json();
     })
     .then((data) => {
-      // console.log(data)
       setImage_url(data.url)
+      
       setImage_url((image_url) => {
-
-        // console.log(image_url)
 
         product({name, price, image_url, description})
         .then(() => router.push('/app'))
@@ -52,10 +45,6 @@ const NewProduct = () => {
     })
 
     console.log(image_url)
-
-    // product({name, price, image_url, description})
-    // .then(() => router.push('/app'))
-    // .catch((err) => console.log(err));
 
   }
 
