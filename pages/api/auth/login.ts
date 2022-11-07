@@ -26,6 +26,7 @@ const handler = nc().post(async (req: NextApiRequest, res: NextApiResponse) => {
   } else if (record[0].password !== req.body.password) {
     return res.status(401).json({ message: "Invalid email/password" });
   } else {
+    console.log(record)
     // generates JWT token
     const token = sign(
       {

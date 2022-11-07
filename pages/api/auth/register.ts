@@ -5,12 +5,10 @@ import { getXataClient } from "../../../utils/xata.codegen";
 const xata = getXataClient();
 
 const handler = nc().post(async (req: NextApiRequest, res: NextApiResponse) => {
-  // console.log(req.body.firstname);
+
   const record = await xata.db.Users.filter({
     email: req.body.email
   }).getMany();
-
-  // console.log(record.length);
 
   if (record.length !== 0) {
     res.status(404);
