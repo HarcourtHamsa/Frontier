@@ -5,43 +5,60 @@ import Button from "../../components/Button/Button";
 import InputField from "../../components/InputField/InputField";
 import styles from "./signup.module.scss";
 import { register } from "../../lib/auth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 
 const signup = () => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const[username, setUsername] = useState()
-  const[first_name, setFirstname] = useState()
-  const[last_name, setLastname] = useState()
-  const[email, setEmail] = useState()
-  const[password, setPassword] = useState()
+  const [username, setUsername] = useState();
+  const [first_name, setFirstname] = useState();
+  const [last_name, setLastname] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const notify = (msg) => toast(`${msg}`);
 
   const handleUsernameChange = (e) => {
-    setUsername(e.target.value)
-  }
+    setUsername(e.target.value);
+  };
   const handleFirstnameChange = (e) => {
-    setFirstname(e.target.value)
-  }
+    setFirstname(e.target.value);
+  };
   const handleLastnameChange = (e) => {
-    setLastname(e.target.value)
-  }
+    setLastname(e.target.value);
+  };
   const handleEmailChange = (e) => {
-    setEmail(e.target.value)
-  }
+    setEmail(e.target.value);
+  };
   const handlePasswordChange = (e) => {
-    setPassword(e.target.value)
-  }
+    setPassword(e.target.value);
+  };
 
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    register({username, first_name, last_name, email, password})
-    .then(() => router.push('/app'))
-    .catch((err) => console.log(err));
-    
-  }
+
+    try {
+      setIsLoading(true);
+      await register({ username, first_name, last_name, email, password });
+      notify("User account created");
+      router.push("/login");
+    } catch (error) {
+      notify("User already exists");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className={styles.signup_page}>
+      <ToastContainer
+        position="top-center"
+        theme="light"
+        hideProgressBar={true}
+      />
       <div className={styles.card}>
         <p className={styles.title}>Create your account</p>
 
@@ -86,7 +103,11 @@ const signup = () => {
             id="password"
             value={password}
           />
-          <Button label="Create Account" theme="green" type="submit" />
+          <Button
+            label={isLoading ? "Loading..." : "Create Account"}
+            theme="green"
+            type="submit"
+          />
         </form>
 
         <p>

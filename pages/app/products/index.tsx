@@ -4,6 +4,7 @@ import React, { ReactElement, useEffect, useState } from "react";
 import Button from "../../../components/Button/Button";
 import Card from "../../../components/Card/Card";
 import Layout from "../../../components/Layout/Layout";
+import { WithAuth } from "../../../HOCs/WithAuth";
 import styles from "./products.module.scss";
 
 const Products = (): ReactElement => {
@@ -13,7 +14,7 @@ const Products = (): ReactElement => {
 
   useEffect(() => {
     async function getProducts() {
-      const { data } = await axios.get("/api/auth/products");
+      const { data } = await axios.post("/api/products", { storeID });
       return data;
     }
 
@@ -32,7 +33,14 @@ const Products = (): ReactElement => {
             label="New product"
             theme="green"
             type="button"
-            onClick={() => router.push("/app/products/new")}
+            onClick={() =>
+              router.push({
+                pathname: "/app/products/new",
+                query: {
+                  storeID,
+                },
+              })
+            }
           />
         </div>
 
@@ -48,5 +56,9 @@ const Products = (): ReactElement => {
     </div>
   );
 };
+
+export const getServerSideProps = WithAuth(async (context) => {
+  return { props: {} };
+});
 
 export default Products;
