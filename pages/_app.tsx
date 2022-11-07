@@ -1,8 +1,6 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import "../styles/index.scss";
-import { Provider } from "react-redux";
-import { store } from "../store/store";
 
 const metas = {
   title: "Frontier App",
@@ -15,7 +13,7 @@ const metas = {
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Provider store={store}>
+    <>
       <Head>
         <title>{metas.title}</title>
         <meta property="og:title" content={metas.title} key="og:title" />
@@ -59,6 +57,6 @@ export default function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Component {...pageProps} />
-    </Provider>
+    </>
   );
 }
